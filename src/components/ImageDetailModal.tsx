@@ -27,15 +27,15 @@ export default function ImageDetailModal({ image, onClose }: ImageDetailModalPro
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.9 }}
           transition={{ duration: 0.3 }}
-          className="relative z-10 w-full max-w-6xl mx-4 bg-secondary rounded-lg overflow-hidden"
+          className="relative z-10 w-full max-w-6xl mx-4 bg-secondary rounded-lg overflow-hidden border border-accentcyan/30"
         >
           {/* Close Button */}
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 z-20 p-2 bg-primary/80 hover:bg-primary rounded-full transition-colors"
+            className="absolute top-4 right-4 z-20 p-2 bg-gradient-to-r from-accentcyan to-accentmagenta hover:shadow-lg hover:shadow-accentcyan/50 rounded-full transition-all duration-300"
             aria-label="Close modal"
           >
-            <X size={24} className="text-primary-foreground" />
+            <X size={24} className="text-primary" />
           </button>
 
           <div className="grid md:grid-cols-2 gap-0">
@@ -64,7 +64,7 @@ export default function ImageDetailModal({ image, onClose }: ImageDetailModalPro
               )}
 
               {/* Metadata */}
-              <div className="space-y-4 pt-6 border-t border-secondary-foreground/10">
+              <div className="space-y-4 pt-6 border-t border-accentcyan/20">
                 {image.uploadDate && (
                   <div>
                     <p className="font-heading text-sm text-secondary-foreground/60 mb-1">
@@ -95,7 +95,7 @@ export default function ImageDetailModal({ image, onClose }: ImageDetailModalPro
               {/* Close Button (Bottom) */}
               <button
                 onClick={onClose}
-                className="mt-8 px-8 py-4 bg-accentcyan text-primary font-heading text-base rounded-full hover:bg-accentcyan/90 transition-colors w-full md:w-auto"
+                className="mt-8 px-8 py-4 bg-gradient-to-r from-accentcyan to-accentmagenta text-primary font-heading text-base rounded-full hover:shadow-lg hover:shadow-accentcyan/50 transition-all duration-300 w-full md:w-auto"
               >
                 Close
               </button>

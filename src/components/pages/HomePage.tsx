@@ -59,6 +59,21 @@ export default function HomePage() {
     return patterns[index % patterns.length];
   };
 
+  // Vibrant color palette for cards
+  const getVibrantColor = (index: number) => {
+    const colors = [
+      'from-accentcyan to-accentpurple',
+      'from-accentmagenta to-accentpink',
+      'from-accentpurple to-accentorange',
+      'from-accentpink to-accentyellow',
+      'from-accentorange to-accentlime',
+      'from-accentlime to-accentcyan',
+      'from-accentyellow to-accentmagenta',
+      'from-accentcyan to-accentpink',
+    ];
+    return colors[index % colors.length];
+  };
+
   return (
     <div className="min-h-screen bg-primary text-primary-foreground selection:bg-accentcyan selection:text-primary overflow-clip">
       <style>{`
@@ -87,6 +102,27 @@ export default function HomePage() {
           background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
                             linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
         }
+        .vibrant-gradient-border {
+          position: relative;
+          overflow: hidden;
+        }
+        .vibrant-gradient-border::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          padding: 2px;
+          background: linear-gradient(135deg, #00F0FF, #FF00FF, #B000FF, #FF1493, #FF6B00, #FFD700, #00FF41, #00F0FF);
+          background-size: 300% 300%;
+          animation: gradientShift 8s ease infinite;
+          border-radius: 1rem;
+          z-index: -1;
+          pointer-events: none;
+        }
+        @keyframes gradientShift {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
       `}</style>
 
       <Header />
@@ -105,15 +141,13 @@ export default function HomePage() {
             className="max-w-2xl relative z-10"
           >
             <div className="flex items-center gap-4 mb-8">
-              <div className="h-[1px] w-12 bg-accentcyan" />
-              <span className="font-heading text-accentcyan tracking-widest uppercase text-sm">System Online</span>
+              <div className="h-[1px] w-12 bg-gradient-to-r from-accentcyan to-accentmagenta" />
+              <span className="font-heading text-transparent bg-clip-text bg-gradient-to-r from-accentcyan via-accentmagenta to-accentpurple tracking-widest uppercase text-sm">System Online</span>
             </div>
             
-            <h1 className="font-heading text-6xl lg:text-7xl xl:text-8xl text-primary-foreground mb-6 leading-[0.9] tracking-tight">
+            <h1 className="font-heading text-6xl lg:text-7xl xl:text-8xl text-transparent bg-clip-text bg-gradient-to-r from-accentcyan via-accentmagenta to-accentpurple mb-6 leading-[0.9] tracking-tight">
               POWERING<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-foreground to-primary-foreground/40">
-                THE FUTURE
-              </span>
+              THE FUTURE
             </h1>
             
             <p className="font-paragraph text-lg lg:text-xl text-primary-foreground/70 mb-12 max-w-md font-light">
@@ -124,7 +158,7 @@ export default function HomePage() {
               href="#gallery"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center justify-center px-10 py-4 bg-accentcyan text-primary font-heading text-sm uppercase tracking-wider rounded-full hover:bg-white transition-colors duration-300"
+              className="inline-flex items-center justify-center px-10 py-4 bg-gradient-to-r from-accentcyan to-accentmagenta text-primary font-heading text-sm uppercase tracking-wider rounded-full hover:shadow-lg hover:shadow-accentcyan/50 transition-all duration-300"
             >
               Explore Data
             </motion.a>
@@ -132,7 +166,7 @@ export default function HomePage() {
         </div>
 
         {/* Right Image Panel */}
-        <div className="w-full lg:w-1/2 h-full relative z-10 hidden lg:block overflow-hidden border-l border-white/10">
+        <div className="w-full lg:w-1/2 h-full relative z-10 hidden lg:block overflow-hidden border-l border-accentcyan/20">
           <motion.div 
             style={{ y: heroY, opacity: heroOpacity }} 
             className="absolute inset-[-10%] w-[120%] h-[120%]"
@@ -144,7 +178,7 @@ export default function HomePage() {
               width={1200}
             />
             {/* Glare Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent mix-blend-overlay" />
+            <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-accentcyan/5 to-transparent mix-blend-overlay" />
             <div className="absolute inset-0 bg-primary/20" />
           </motion.div>
         </div>
@@ -166,10 +200,10 @@ export default function HomePage() {
               <h2 className="font-heading text-4xl md:text-6xl lg:text-8xl text-primary-foreground/10 uppercase tracking-tighter">
                 Structural
               </h2>
-              <h2 className="font-heading text-4xl md:text-6xl lg:text-8xl text-primary-foreground uppercase tracking-tighter -mt-4 md:-mt-8 relative z-10">
+              <h2 className="font-heading text-4xl md:text-6xl lg:text-8xl text-transparent bg-clip-text bg-gradient-to-r from-accentcyan via-accentmagenta to-accentpurple uppercase tracking-tighter -mt-4 md:-mt-8 relative z-10">
                 Integrity
               </h2>
-              <p className="font-paragraph text-accentcyan mt-8 max-w-xl mx-auto text-lg">
+              <p className="font-paragraph text-transparent bg-clip-text bg-gradient-to-r from-accentcyan to-accentmagenta mt-8 max-w-xl mx-auto text-lg">
                 Analyzing visual data points across multiple dimensions.
               </p>
             </motion.div>
@@ -178,12 +212,12 @@ export default function HomePage() {
       </section>
 
       {/* GALLERY SECTION - Bento Grid */}
-      <section id="gallery" ref={galleryRef} className="w-full py-32 bg-primary relative z-20 border-t border-white/10">
+      <section id="gallery" ref={galleryRef} className="w-full py-32 bg-primary relative z-20 border-t border-accentcyan/20">
         <div className="max-w-[120rem] mx-auto px-4 sm:px-8 lg:px-16">
           
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
             <div>
-              <h3 className="font-heading text-3xl md:text-5xl text-primary-foreground mb-4">
+              <h3 className="font-heading text-3xl md:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-accentcyan to-accentmagenta mb-4">
                 Data Matrix
               </h3>
               <p className="font-paragraph text-primary-foreground/60 max-w-md">
@@ -191,7 +225,7 @@ export default function HomePage() {
               </p>
             </div>
             <div className="text-right">
-              <span className="font-heading text-accentcyan text-6xl block leading-none">
+              <span className="font-heading text-transparent bg-clip-text bg-gradient-to-r from-accentcyan via-accentmagenta to-accentpurple text-6xl block leading-none">
                 {images.length.toString().padStart(2, '0')}
               </span>
               <span className="font-paragraph text-primary-foreground/40 uppercase text-xs tracking-widest">
@@ -210,6 +244,7 @@ export default function HomePage() {
               <div className={`grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[250px] md:auto-rows-[300px] transition-opacity duration-1000 ${images.length === 0 ? 'opacity-0' : 'opacity-100'}`}>
                 {images.map((image, index) => {
                   const bentoClass = getBentoClass(index);
+                  const vibrantColor = getVibrantColor(index);
                   
                   return (
                     <motion.div
@@ -218,9 +253,12 @@ export default function HomePage() {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true, margin: "-50px" }}
                       transition={{ duration: 0.6, delay: (index % 8) * 0.1 }}
-                      className={`group relative overflow-hidden rounded-2xl cursor-pointer bg-darkgrayoverlay border border-white/5 glare-effect ${bentoClass}`}
+                      className={`group relative overflow-hidden rounded-2xl cursor-pointer bg-darkgrayoverlay glare-effect ${bentoClass}`}
                       onClick={() => setSelectedImage(image)}
                     >
+                      {/* Vibrant border gradient */}
+                      <div className={`absolute inset-0 bg-gradient-to-br ${vibrantColor} opacity-0 group-hover:opacity-20 transition-opacity duration-500 rounded-2xl`} />
+                      
                       {/* Image Container with Parallax feel on hover */}
                       <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-105">
                         <Image
@@ -238,8 +276,8 @@ export default function HomePage() {
                       <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end z-10">
                         <div className="translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
                           <div className="flex items-center gap-3 mb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-                            <span className="w-2 h-2 rounded-full bg-accentcyan animate-pulse" />
-                            <span className="font-heading text-xs text-accentcyan uppercase tracking-widest">
+                            <span className={`w-2 h-2 rounded-full bg-gradient-to-r ${vibrantColor} animate-pulse`} />
+                            <span className="font-heading text-xs text-transparent bg-clip-text bg-gradient-to-r from-accentcyan to-accentmagenta uppercase tracking-widest">
                               Asset {String(index + 1).padStart(2, '0')}
                             </span>
                           </div>
@@ -258,9 +296,9 @@ export default function HomePage() {
                         </div>
                       </div>
 
-                      {/* Corner Accents */}
-                      <div className="absolute top-4 right-4 w-4 h-4 border-t border-r border-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                      <div className="absolute bottom-4 left-4 w-4 h-4 border-b border-l border-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      {/* Corner Accents with vibrant colors */}
+                      <div className={`absolute top-4 right-4 w-4 h-4 border-t border-r border-transparent bg-gradient-to-br ${vibrantColor} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+                      <div className={`absolute bottom-4 left-4 w-4 h-4 border-b border-l border-transparent bg-gradient-to-tr ${vibrantColor} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
                     </motion.div>
                   );
                 })}
@@ -270,10 +308,10 @@ export default function HomePage() {
             {/* Empty State */}
             {!isLoading && images.length === 0 && (
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center border border-white/10 p-12 rounded-2xl bg-darkgrayoverlay/50 backdrop-blur-sm">
-                  <div className="w-16 h-16 mx-auto mb-6 border border-white/20 rounded-full flex items-center justify-center">
-                    <span className="block w-8 h-[1px] bg-white/40 rotate-45 absolute" />
-                    <span className="block w-8 h-[1px] bg-white/40 -rotate-45 absolute" />
+                <div className="text-center border border-accentcyan/30 p-12 rounded-2xl bg-darkgrayoverlay/50 backdrop-blur-sm">
+                  <div className="w-16 h-16 mx-auto mb-6 border border-accentcyan/40 rounded-full flex items-center justify-center">
+                    <span className="block w-8 h-[1px] bg-gradient-to-r from-accentcyan to-accentmagenta rotate-45 absolute" />
+                    <span className="block w-8 h-[1px] bg-gradient-to-r from-accentmagenta to-accentpurple -rotate-45 absolute" />
                   </div>
                   <p className="font-heading text-2xl text-primary-foreground mb-2">
                     Data Stream Empty

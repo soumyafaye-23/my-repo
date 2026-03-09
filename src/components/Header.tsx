@@ -13,12 +13,12 @@ export default function Header() {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-primary/95 backdrop-blur-sm border-b border-primary-foreground/10">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-primary/95 backdrop-blur-sm border-b border-accentcyan/20">
       <div className="max-w-[120rem] mx-auto px-8 lg:px-16">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <span className="font-heading text-2xl text-primary-foreground tracking-wider">
+            <span className="font-heading text-2xl text-transparent bg-clip-text bg-gradient-to-r from-accentcyan to-accentmagenta tracking-wider">
               VIENTO +
             </span>
           </Link>
@@ -29,7 +29,7 @@ export default function Header() {
               <a
                 key={link.label}
                 href={link.href}
-                className="font-paragraph text-base text-primary-foreground/80 hover:text-accentcyan transition-colors"
+                className="font-paragraph text-base text-primary-foreground/80 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-accentcyan hover:to-accentmagenta transition-all duration-300"
               >
                 {link.label}
               </a>
@@ -54,7 +54,7 @@ export default function Header() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-primary border-t border-primary-foreground/10"
+            className="md:hidden bg-primary border-t border-accentcyan/20"
           >
             <nav className="px-8 py-6 space-y-4">
               {navLinks.map((link) => (
@@ -62,7 +62,7 @@ export default function Header() {
                   key={link.label}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block font-paragraph text-lg text-primary-foreground/80 hover:text-accentcyan transition-colors"
+                  className="block font-paragraph text-lg text-primary-foreground/80 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-accentcyan hover:to-accentmagenta transition-all duration-300"
                 >
                   {link.label}
                 </a>

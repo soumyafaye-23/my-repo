@@ -4,13 +4,13 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer id="contact" className="w-full bg-primary py-16 lg:py-20">
+    <footer id="contact" className="w-full bg-primary py-16 lg:py-20 border-t border-accentcyan/20">
       <div className="max-w-[120rem] mx-auto px-8 lg:px-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16 mb-12">
           {/* Brand Column */}
           <div>
             <Link to="/" className="inline-block mb-6">
-              <span className="font-heading text-2xl text-primary-foreground tracking-wider">
+              <span className="font-heading text-2xl text-transparent bg-clip-text bg-gradient-to-r from-accentcyan to-accentmagenta tracking-wider">
                 VIENTO +
               </span>
             </Link>
@@ -27,19 +27,19 @@ export default function Footer() {
             <nav className="space-y-3">
               <a
                 href="#gallery"
-                className="block font-paragraph text-base text-primary-foreground/70 hover:text-accentcyan transition-colors"
+                className="block font-paragraph text-base text-primary-foreground/70 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-accentcyan hover:to-accentmagenta transition-all duration-300"
               >
                 Gallery
               </a>
               <a
                 href="#about"
-                className="block font-paragraph text-base text-primary-foreground/70 hover:text-accentcyan transition-colors"
+                className="block font-paragraph text-base text-primary-foreground/70 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-accentcyan hover:to-accentmagenta transition-all duration-300"
               >
                 About
               </a>
               <a
                 href="#contact"
-                className="block font-paragraph text-base text-primary-foreground/70 hover:text-accentcyan transition-colors"
+                className="block font-paragraph text-base text-primary-foreground/70 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-accentcyan hover:to-accentmagenta transition-all duration-300"
               >
                 Contact
               </a>
@@ -63,7 +63,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-primary-foreground/10">
+        <div className="pt-8 border-t border-accentcyan/20">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="font-paragraph text-sm text-primary-foreground/60">
               © {currentYear} Viento Gallery. All rights reserved.
@@ -71,13 +71,13 @@ export default function Footer() {
             <div className="flex gap-6">
               <a
                 href="#"
-                className="font-paragraph text-sm text-primary-foreground/60 hover:text-accentcyan transition-colors"
+                className="font-paragraph text-sm text-primary-foreground/60 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-accentcyan hover:to-accentmagenta transition-all duration-300"
               >
                 Privacy Policy
               </a>
               <a
                 href="#"
-                className="font-paragraph text-sm text-primary-foreground/60 hover:text-accentcyan transition-colors"
+                className="font-paragraph text-sm text-primary-foreground/60 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-accentcyan hover:to-accentmagenta transition-all duration-300"
               >
                 Terms of Service
               </a>

@@ -24,6 +24,12 @@ export default {
             },
             colors: {
                 accentcyan: '#00F0FF',
+                accentmagenta: '#FF00FF',
+                accentpurple: '#B000FF',
+                accentpink: '#FF1493',
+                accentorange: '#FF6B00',
+                accentyellow: '#FFD700',
+                accentlime: '#00FF41',
                 darkgrayoverlay: '#1A1A1A',
                 foreground: '#000000',
                 destructive: '#DF3131',
